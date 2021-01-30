@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 const morgan = require("morgan");
-const candidatRoutes = require("./routes/candidat");
+const userRoutes = require("./routes/user");
 
 // * Main & Log
 app.use(morgan("dev"));
@@ -13,7 +13,7 @@ app.use(express.json());
 app.get("/", (req, res, next) => {
   res.status(200).json({ success: true, message: "Express Up & Running" });
 });
-app.use(candidatRoutes);
+app.use(userRoutes);
 
 app.listen(PORT, (err) => {
   if (err) {
