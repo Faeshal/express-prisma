@@ -7,7 +7,11 @@ const prisma = new PrismaClient();
 // @desc    Get All Candidat
 // @access  Public
 exports.getUser = asyncHandler(async (req, res, next) => {
-  const user = await prisma.user.findMany();
+  const user = await prisma.user.findMany({
+    include: {
+      address: true,
+    },
+  });
   res.status(200).json({ success: true, data: user });
 });
 
